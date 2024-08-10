@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-//this is a test file where I have first tried out some of the basics of reqiest handling in golang
+// this is a test file where I have first tried out some of the basics of reqiest handling in golang
 func Testing(t *testing.T) {
 
 	resp, err := http.Get("www.example.com/")
@@ -42,43 +42,40 @@ func TestDo(t *testing.T) {
 		"http://localhost:3000/api/auth",
 		bodyInpBuff,
 	)
-	
-	if err != nil{
+
+	if err != nil {
 		t.Fatal(err)
 	}
-	
+
 	req.Header.Set("Content-Type", "application/json")
-	
+
 	res, err := client.Do(req)
-	
-	
-	if err != nil{
+
+	if err != nil {
 		t.Fatal(err)
 	}
-	
-	resBody , err := io.ReadAll(res.Body)
-	
-	if err != nil{
+
+	resBody, err := io.ReadAll(res.Body)
+
+	if err != nil {
 		t.Fatal(err)
 	}
-	
-t.Log(resBody)
+
+	t.Log(resBody)
 
 }
 
+func TestMakeRequest(t *testing.T) {
+	res, err := MakeRequest(&MakeRequestCfg{
+		Method: "GET",
+		Url:    "https://github.com/satyam-jha-16/",
+		Headers: map[string]string{
+			"Content-Type": "application/json",
+		},
+	})
 
-func TestMakeRequest(t *testing.T){
-  res, err := MakeRequest(&MakeRequestCfg{
-    Method : "GET",
-    Url : "https://github.com/satyam-jha-16/",
-    Headers : map [string]string {
-      "Content-Type" : "application/json",
-    },
-    
-  })
-
-  if err != nil {
-    t.Fatal(err)
-  }
-  t.Log(res.Body)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Log(res.Body)
 }

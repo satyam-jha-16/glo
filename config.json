@@ -1,0 +1,6 @@
+{
+  "BASE_API": "http://github.com",
+  "HEADERS": {
+    "Content-Type": "application/json"
+  }
+}
